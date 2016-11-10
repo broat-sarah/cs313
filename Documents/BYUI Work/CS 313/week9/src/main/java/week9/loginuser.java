@@ -92,6 +92,8 @@ public class loginuser extends HttpServlet {
                     } else {
                         request.getRequestDispatcher("incorrectlogin.jsp").forward(request, response);
                     }
+                } else {
+                    request.getRequestDispatcher("incorrectlogin.jsp").forward(request, response);
                 }
     }
 
