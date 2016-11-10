@@ -61,12 +61,8 @@ public class loginuser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                List<User> user = new ArrayList<>();
-                user.add(new User("breadprincess", "delilah88"));
-                user.add(new User("missmegan77", "candy95"));
-                user.add(new User("kymesa", "kingmoses"));
-
-                request.setAttribute("user", user);
+                HardCodedUserHandler handler = new HardCodedUserHandler();
+                request.setAttribute("user", handler.getUserInformation());
                 request.getRequestDispatcher("login.jsp").forward(request, response);
         processRequest(request, response);
     }
