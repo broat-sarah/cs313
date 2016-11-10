@@ -13,6 +13,12 @@ import java.util.List;
  * @author sarahbroat
  */
 public class UserDataHandler {
-    public List<User> getUserInformation();
-  }
+    public List<User> getUserInformation() {
+    List<User> user = new ArrayList();
+    user.add(new User("breadprincess", "delilah88"));
+    user.add(new User("missmegan77", "candy95"));
+    user.add(new User("kymesa", "kingmoses"));
 
+    return user;
+  }
+}
