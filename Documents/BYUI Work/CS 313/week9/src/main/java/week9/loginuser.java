@@ -87,7 +87,7 @@ public class loginuser extends HttpServlet {
                 
                 if (testUser != null) {
                     if (testUser.getPassword().equals(password)) {
-                        request.setAttribute("user", username);
+                        request.getSession().setAttribute("user", username);
                         request.getRequestDispatcher("welcome.jsp").forward(request, response);
                     } else {
                         request.getRequestDispatcher("incorrectlogin.jsp").forward(request, response);

@@ -12,6 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Welcome <? php $_SESSION['user'] ?></h1>
+        <h1>Welcome ${user}</h1>
+        <form method="GET" action="logoutUser">
+            <input type="submit" value="Logout" name="logoutButton"/>
+        </form>
     </body>
 </html>
