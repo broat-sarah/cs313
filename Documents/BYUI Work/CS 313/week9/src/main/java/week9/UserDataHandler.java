@@ -12,7 +12,8 @@ import java.util.List;
  *
  * @author sarahbroat
  */
-public class UserDataHandler {
+public interface UserDataHandler {
+    
     public List<User> getUserInformation();
   }
 
