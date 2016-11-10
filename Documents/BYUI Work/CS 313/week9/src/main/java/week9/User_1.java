@@ -14,7 +14,14 @@ import java.util.logging.Logger;
  */
 class User {
     private String username;
+    private String password;
 
+    //constructor
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+        
     @Override
     public String toString() {
         return "user{" + "username=" + username + ", password=" + password + '}';
@@ -59,11 +66,5 @@ class User {
         this.password = password;
     }
     private static final Logger LOG = Logger.getLogger(User.class.getName());
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-    private String password;
-    
+   
 }

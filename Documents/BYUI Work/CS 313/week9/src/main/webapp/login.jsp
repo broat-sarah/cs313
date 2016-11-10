@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Login</h1>
-        <form action="login" method="GET">
+        <form action="loginuser" method="POST">
               User Name: <input type="text" name="username" /><br />
               Password: <input type="text" name="password" /><br /> 
               <input type="submit" value="Login" />

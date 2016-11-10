@@ -7,13 +7,13 @@ package week9;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.lang.String;
 /**
  *
  * @author sarahbroat
  */
 public interface UserDataHandler {
     
-    public List<User> getUserInformation();
-  }
+    public User getUserInformation(String username);
+}
 

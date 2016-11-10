@@ -14,12 +14,19 @@ import java.util.List;
  */
 public class HardCodedUserHandler implements UserDataHandler {
     @Override
-    public List<User> getUserInformation() {
-    List<User> user = new ArrayList();
-    user.add(new User("breadprincess", "delilah88"));
-    user.add(new User("missmegan77", "candy95"));
-    user.add(new User("kymesa", "kingmoses"));
+    public User getUserInformation(String username) {
+        List<User> user = new ArrayList();
+        user.add(new User("breadprincess", "delilah88"));
+        user.add(new User("missmegan77", "candy95"));
+        user.add(new User("kymesa", "kingmoses"));
 
-    return user;
-}
+        User userFound = null;
+        for (int i = 0; i < user.size(); i++) {
+            if (username.equals(user.get(i).getUsername())) {
+            userFound = user.get(i);
+            return userFound;
+            }
+        }
+        return userFound;
+    }
 }
