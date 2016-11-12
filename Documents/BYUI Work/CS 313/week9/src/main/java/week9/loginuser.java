@@ -61,9 +61,6 @@ public class loginuser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                UserDataHandler handler = new UserDataHandler();
-                request.setAttribute("user", handler.getUserInformation());
-                request.getRequestDispatcher("login.jsp").forward(request, response);
         processRequest(request, response);
     }
 
@@ -78,7 +75,26 @@ public class loginuser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+                String username = "";
+                String password = "";
+                
+                username = request.getParameter("username");
+                password = request.getParameter("password");
+                
+                HardCodedUserHandler handler = new HardCodedUserHandler();
+                User testUser = handler.getUserInformation(username);
+                
+                if (testUser != null) {
+                    if (testUser.getPassword().equals(password)) {
+                        request.setAttribute("user", username);
+                        request.getRequestDispatcher("welcome.jsp").forward(request, response);
+                    } else {
+                        request.getRequestDispatcher("incorrectlogin.jsp").forward(request, response);
+                    }
+                } else {
+                    request.getRequestDispatcher("incorrectlogin.jsp").forward(request, response);
+                }
     }
 
     /**
