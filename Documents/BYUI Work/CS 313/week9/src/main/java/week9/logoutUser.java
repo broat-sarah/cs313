@@ -7,21 +7,18 @@ package week9;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
- * @author sarahbroat
+ * @author Tim
  */
-@WebServlet(name = "loginuser", urlPatterns = {"/loginuser"})
-public class loginuser extends HttpServlet {
+@WebServlet(name = "logoutUser", urlPatterns = {"/logoutUser"})
+public class logoutUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +37,10 @@ public class loginuser extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet loginuser</title>");            
+            out.println("<title>Servlet logoutUser</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet loginuser at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet logoutUser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,6 +58,9 @@ public class loginuser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            request.getSession().invalidate();
+            response.sendRedirect("login.jsp");
+        
         processRequest(request, response);
     }
 
@@ -75,26 +75,7 @@ public class loginuser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-                String username = "";
-                String password = "";
-                
-                username = request.getParameter("username");
-                password = request.getParameter("password");
-                
-                HardCodedUserHandler handler = new HardCodedUserHandler();
-                User testUser = handler.getUserInformation(username);
-                
-                if (testUser != null) {
-                    if (testUser.getPassword().equals(password)) {
-                        request.getSession().setAttribute("user", username);
-                        request.getRequestDispatcher("welcome.jsp").forward(request, response);
-                    } else {
-                        request.getRequestDispatcher("incorrectlogin.jsp").forward(request, response);
-                    }
-                } else {
-                    request.getRequestDispatcher("incorrectlogin.jsp").forward(request, response);
-                }
+        processRequest(request, response);
     }
 
     /**
