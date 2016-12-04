@@ -48,10 +48,11 @@ public class GetGeoCoding extends HttpServlet {
         //List list = (List) map.get("Search");
         
         //request.setAttribute("geocoding", list);
+        String searchParam = (String) request.getParameter("searchParam");
         
         GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyCgE27tM4uyw4_akGQMaFEV119osJ7xmN0");
         GeocodingResult[] results =  GeocodingApi.geocode(context,
-        "/*search form input*/").await();
+        searchParam).await();
         System.out.println(results[0].formattedAddress);    
         
         request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Webcam Search!</h1>
-        <form method="post" action="WebcamSearch">
+        <form method="post" action="GetGeoCoding">
             <label for="searchParam">Search: </label>
             <input type="text" id="searchParam" name="searchParam" value="What's your location?"/>
             <input type="submit" value="Search"/>
