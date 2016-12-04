@@ -50,7 +50,7 @@ public class GetGeoCoding extends HttpServlet {
         //request.setAttribute("geocoding", list);
         String searchParam = (String) request.getParameter("searchParam");
         
-        GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyCgE27tM4uyw4_akGQMaFEV119osJ7xmN0");
+        GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyCUKop6Z-SYaibrXoQavQY1kQn8hNuKwZM");
         GeocodingResult[] results =  GeocodingApi.geocode(context,
         searchParam).await();
         System.out.println(results[0].formattedAddress);    
