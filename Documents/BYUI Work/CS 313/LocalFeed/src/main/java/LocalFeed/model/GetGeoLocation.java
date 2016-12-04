@@ -45,7 +45,6 @@ public class GetGeoLocation extends HttpServlet {
         request.setAttribute("geolocation", list);
         request.getRequestDispatcher("index.jsp").forward(request, response);
       }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

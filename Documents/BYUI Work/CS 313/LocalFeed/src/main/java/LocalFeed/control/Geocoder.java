@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.StringTokenizer;
-import org.wicketstuff.gmap.api.GLatLng;
+import wicket.contrib.gmap.api.GLatLng;
 
 public class Geocoder implements Serializable{
     
@@ -23,7 +23,7 @@ public class Geocoder implements Serializable{
     public static final String OUTPUT_KML = "kml";
     public static final String OUTPUT_JSON = "json";
     private final String output = OUTPUT_CSV;
-    private Object GeocoderException;
+    //private Exception GeocoderException;
 
     public Geocoder()
     {
@@ -63,7 +63,7 @@ public class Geocoder implements Serializable{
      * @return
      * @throws IOException
      */
-    public GLatLng geocode(final String address) throws IOException
+    public GLatLng geocode(final String address) throws IOException, GeocoderException
     {
         InputStream is = invokeService(encode(address));
         if (is != null)
