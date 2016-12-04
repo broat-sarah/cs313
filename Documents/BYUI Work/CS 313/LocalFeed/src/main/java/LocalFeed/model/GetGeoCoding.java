@@ -14,6 +14,7 @@ import com.mashape.unirest.http.*;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -24,6 +25,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.UriBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -51,8 +54,10 @@ public class GetGeoCoding extends HttpServlet {
         GeoLatLng geoCoordinates = getGeoCode (searchParam);
 
         // Get Webcams from webcamstravel
-        List<String> webcamURLs = getWebCams(geoCoordinates);
+        List<LinkedHashMap> webcams = getWebCams(geoCoordinates);
+        
         // Send list of webcams to .jsp
+        request.setAttribute("webcams", webcams);
         request.getRequestDispatcher("index.jsp").forward(request, response);
         
       }
@@ -117,7 +122,7 @@ public class GetGeoCoding extends HttpServlet {
         return geoCoordinates;
     }
     
-    private List<String> getWebCams (GeoLatLng geoCoordinates) throws UnirestException {
+    private List<LinkedHashMap> getWebCams (GeoLatLng geoCoordinates) throws UnirestException, IOException {
         
         String radius = "50";
         String webcamapi_URL = "https://webcamstravel.p.mashape.com/webcams/list/nearby=" + String.valueOf(geoCoordinates.lat)
@@ -125,23 +130,12 @@ public class GetGeoCoding extends HttpServlet {
         
         
         HttpResponse<JsonNode> response = Unirest.get(webcamapi_URL).header("X-Mashape-Key", "kTqdiyRL6EmshKwrMBbktSxWuJ4Qp1Vos1HjsnjIugmfxSG56Y").asJson();
-
-        JsonNode responseBody = response.getBody();
-        //<a name="lkr-timelapse-player" data-id="1459258090" data-play="day" href="//lookr.com/1459258090" target="_blank">Seattle: Columbia St Express Lanes</a><script async type="text/javascript" src="//api.lookr.com/embed/script/timelapse.js"></script>
         
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> map = mapper.readValue(response.getRawBody(), Map.class);
+        Map<String, Object> result = (LinkedHashMap)map.get("result");
+        List<LinkedHashMap> webcams = (ArrayList)result.get("webcams");
         
-//UriBuilder uriBuilder = UriBuilder.fromUri("https://webcamstravel.p.mashape.com/webcams/list/nearby={lat},{lng},{radius}").queryParam("s", request.getParameter("searchParam"));
-        
-        //ObjectMapper mapper = new ObjectMapper();
-
-        //Map<String, Object> map = mapper.readValue(uriBuilder.build().toURL(), Map.class);
-
-        //List list = (List) map.get("Search");
-        //<a name="lkr-timelapse-player" data-id="1459258090" data-play="day" href="//lookr.com/1459258090" target="_blank">Seattle: Columbia St Express Lanes</a><script async type="text/javascript" src="//api.lookr.com/embed/script/timelapse.js"></script>
-        //request.setAttribute("webcams", list);
-        //request.getRequestDispatcher("index.jsp").forward(request, response);
-        
-        List<String> webcamURLs = new ArrayList();
-        return webcamURLs;
+        return webcams;
     }
 }

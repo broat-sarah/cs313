@@ -78,8 +78,8 @@ main .content-grid {
 
 main .content-grid-item {
   display: inline-block;
-    width: 100px !important;
-  height: 100px !important;
+    width: 200px !important;
+  height: 110px !important;
   background-color: #1092a8;
   margin-right: 15px;
   margin-bottom: 15px;
