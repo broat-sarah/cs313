@@ -5,11 +5,15 @@
  */
 package LocalFeed.model;
 
+import LocalFeed.control.GeoLatLng;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;
+import com.mashape.unirest.http.*;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -39,23 +43,18 @@ public class GetGeoCoding extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-         UriBuilder uriBuilder = UriBuilder.fromUri("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCgE27tM4uyw4_akGQMaFEV119osJ7xmN0").queryParam("s", request.getParameter("searchParam"));
         
-        //ObjectMapper mapper = new ObjectMapper();
-
-        //Map<String, Object> map = mapper.readValue(uriBuilder.build().toURL(), Map.class);
-
-        //List list = (List) map.get("Search");
-        
-        //request.setAttribute("geocoding", list);
         String searchParam = (String) request.getParameter("searchParam");
+
         
-        GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyCUKop6Z-SYaibrXoQavQY1kQn8hNuKwZM");
-        GeocodingResult[] results =  GeocodingApi.geocode(context,
-        searchParam).await();
-        System.out.println(results[0].formattedAddress);    
-        
+        // Get Geocoding data from google
+        GeoLatLng geoCoordinates = getGeoCode (searchParam);
+
+        // Get Webcams from webcamstravel
+        List<String> webcamURLs = getWebCams(geoCoordinates);
+        // Send list of webcams to .jsp
         request.getRequestDispatcher("index.jsp").forward(request, response);
+        
       }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -104,5 +103,41 @@ public class GetGeoCoding extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private GeoLatLng getGeoCode (String searchParam) throws Exception {
+        
+        GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyCUKop6Z-SYaibrXoQavQY1kQn8hNuKwZM");
+        GeocodingResult[] results =  GeocodingApi.geocode(context, searchParam).await();
+        System.out.println(results[0].formattedAddress);    
+        
+        double lat = results[0].geometry.location.lat;
+        double lng = results[0].geometry.location.lng;
+        GeoLatLng geoCoordinates = new GeoLatLng(lat, lng);
+        
+        return geoCoordinates;
+    }
+    
+    private List<String> getWebCams (GeoLatLng geoCoordinates) throws UnirestException {
+        
+        String radius = "50";
+        String webcamapi_URL = "https://webcamstravel.p.mashape.com/webcams/list/nearby=" + String.valueOf(geoCoordinates.lat)
+                               + "," + String.valueOf(geoCoordinates.lng) + "," + radius;
+        
+        
+        HttpResponse<JsonNode> response = Unirest.get(webcamapi_URL).header("X-Mashape-Key", "kTqdiyRL6EmshKwrMBbktSxWuJ4Qp1Vos1HjsnjIugmfxSG56Y").asJson();
+        
+        //UriBuilder uriBuilder = UriBuilder.fromUri("https://webcamstravel.p.mashape.com/webcams/list/nearby={lat},{lng},{radius}").queryParam("s", request.getParameter("searchParam"));
+        
+        //ObjectMapper mapper = new ObjectMapper();
 
+        //Map<String, Object> map = mapper.readValue(uriBuilder.build().toURL(), Map.class);
+
+        //List list = (List) map.get("Search");
+        
+        //request.setAttribute("webcams", list);
+        //request.getRequestDispatcher("index.jsp").forward(request, response);
+        
+        List<String> webcamURLs = new ArrayList();
+        return webcamURLs;
+    }
 }
