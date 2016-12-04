@@ -35,6 +35,7 @@
                         <c:forEach var="webcams" items="${webcams}">
                             <div class="content-grid-item">${webcams})</div>
                         </c:forEach>
+                            <a name="lkr-timelapse-player" data-id="1351013092" data-play="day" href="//lookr.com/1351013092" target="_blank">Amadores: Beach at Puerto Rico, Gran Canaria</a><script async type="text/javascript" src="//api.lookr.com/embed/script/timelapse.js"></script>
                     </div>
                 </div>
             </div>

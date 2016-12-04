@@ -27,20 +27,19 @@
             <version>0.1.16</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-jmx</artifactId>
-            <version>1.5.1</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.6</version>
+            </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpasyncclient</artifactId>
+            <version>4.0.2</version>
         </dependency>
         <dependency>
-            <groupId>org.wicketstuff</groupId>
-            <artifactId>wicketstuff-core</artifactId>
-            <version>8.0.0-M1</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>org.wicketstuff</groupId>
-            <artifactId>gmap2</artifactId>
-            <version>1.5-RC5.1</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.3.6</version>
         </dependency>
         <dependency>
             <groupId>org.wicketstuff</groupId>
@@ -48,21 +47,16 @@
             <version>1.4.21</version>
         </dependency>
         <dependency>
-            <groupId>com.danhaywood.isis.wicket</groupId>
-            <artifactId>danhaywood-isis-wicket-gmap3</artifactId>
-            <version>1.4.0</version>
-            <type>pom</type>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160212</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-core</artifactId>
-            <version>6.25.0</version>
         </dependency>
         <dependency>
             <groupId>com.mashape.unirest</groupId>

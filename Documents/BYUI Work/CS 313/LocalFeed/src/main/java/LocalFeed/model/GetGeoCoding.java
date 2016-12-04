@@ -125,15 +125,19 @@ public class GetGeoCoding extends HttpServlet {
         
         
         HttpResponse<JsonNode> response = Unirest.get(webcamapi_URL).header("X-Mashape-Key", "kTqdiyRL6EmshKwrMBbktSxWuJ4Qp1Vos1HjsnjIugmfxSG56Y").asJson();
+
+        JsonNode responseBody = response.getBody();
+        //<a name="lkr-timelapse-player" data-id="1459258090" data-play="day" href="//lookr.com/1459258090" target="_blank">Seattle: Columbia St Express Lanes</a><script async type="text/javascript" src="//api.lookr.com/embed/script/timelapse.js"></script>
         
-        //UriBuilder uriBuilder = UriBuilder.fromUri("https://webcamstravel.p.mashape.com/webcams/list/nearby={lat},{lng},{radius}").queryParam("s", request.getParameter("searchParam"));
+        
+//UriBuilder uriBuilder = UriBuilder.fromUri("https://webcamstravel.p.mashape.com/webcams/list/nearby={lat},{lng},{radius}").queryParam("s", request.getParameter("searchParam"));
         
         //ObjectMapper mapper = new ObjectMapper();
 
         //Map<String, Object> map = mapper.readValue(uriBuilder.build().toURL(), Map.class);
 
         //List list = (List) map.get("Search");
-        
+        //<a name="lkr-timelapse-player" data-id="1459258090" data-play="day" href="//lookr.com/1459258090" target="_blank">Seattle: Columbia St Express Lanes</a><script async type="text/javascript" src="//api.lookr.com/embed/script/timelapse.js"></script>
         //request.setAttribute("webcams", list);
         //request.getRequestDispatcher("index.jsp").forward(request, response);
         
