@@ -22,35 +22,31 @@ public class LibraryTester {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("AuthorJPA"); 
         EntityManager em = emf.createEntityManager();
         
+              
         em.getTransaction().begin(); 
 
         Book newBook = new Book();
         newBook.setTitle("Stardust");
-        newBook.setAuthor_id(3);
+        
+        Author newAuthor = new Author();
+        newAuthor.setName("Neil Gaiman");
+
+        newBook.setAuthor(newAuthor);
 
         em.persist(newBook);
 
         em.getTransaction().commit();
         
         
-        em.getTransaction().begin(); 
 
-        Author newAuthor = new Author();
-        newAuthor.setName("Neil Gaiman");
-
-        em.persist(newAuthor);
-
-        em.getTransaction().commit();
 
         Query query = em.createQuery("SELECT b FROM Book b");
         List<Book> books = query.getResultList(); 
-
+        
+        
         for (Book book : books) {
-               System.out.println("Book: " + book.getTitle());
+               System.out.println("Book: " + book.getTitle() + "\tAuthor: " + book.getAuthor().getName());
 
-               for (Author author : book.getAuthors()) { 
-                      System.out.println("\tAuthor: " + author.getName());
-               }
         }
     }
 }

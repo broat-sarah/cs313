@@ -59,6 +59,11 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-core</artifactId>
+            <version>6.25.0</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -5,58 +5,54 @@
  */
 package library;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 /**
  *
  * @author sarahbroat
  */
 @Entity
-public class Book {
+public class Book implements Serializable {
     
     @Id 
-       @GeneratedValue(strategy = GenerationType.IDENTITY)
-       private int id;
-       private String title;
-       private int author_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String title;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Author author;
        
-       @OneToMany(mappedBy = "book")
-            private List<Author> authors;
+    public int getId() {
+        return id;
+    }
 
-            public List<Author> getAuthors() {
-                   return authors;
-            }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-            public void setAuthors(List<Author> authors) {
-                   this.authors = authors;
-            }
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+       
+       
+    public Author getAuthor() {
+        return author;
+    }  
     
-       public int getId() {
-           return id;
-       }
-
-       public void setId(int id) {
-          this.id = id;
-       }
-
-       public String getTitle() {
-           return title;
-       }
-
-       public void setTitle(String title) {
-           this.title = title;
-       }
-       
-        public int getAuthor_id() {
-        return author_id;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
-    }
 }
