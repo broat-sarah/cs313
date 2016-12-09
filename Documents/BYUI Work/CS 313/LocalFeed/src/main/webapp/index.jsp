@@ -11,9 +11,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="styles.css" type="text/css" rel="stylesheet" />
+        <script src="autocomplete.js"></script>
         <title>LocalFeed 1.0</title>
     </head>
     <body>
+        
         <header>
             <h1>LiveFeed 1.0</h1>
         </header>
@@ -22,7 +24,7 @@
                 <div class="column1">
                     <form method="post" action="GetGeoCoding" class="searchform">
                         <label for="searchParam">Search: </label>
-                        <input type="text" id="searchParam" name="searchParam" value="What's your location?"/>
+                        <input type="text" id="searchParam" class="controls" name="searchParam" value="What's your location?"/>
                         <input type="submit" value="Search"/>
                         <br/>
                         <br/>
@@ -44,5 +46,9 @@
         <footer>
             <p>&copy; LiveFeed 1.0, 2016</p>
         </footer>
+        
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApkTcgdI9Hi9vAg6eNUCXPNUZu-yfWSdE&libraries=places&callback=init"
+        async defer></script>
     </body>
 </html>
