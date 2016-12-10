@@ -41,7 +41,7 @@ main h2 {
     font-size: 1.125em;
     font-family: "Arial Black", Gadget, sans serif;
     text-align: center;
-    margin-left: -35px;
+    margin-left: -65px;
 }
 
 
@@ -55,24 +55,25 @@ main p {
 
 .column1, .column2 {
     display: inline-block;
-    width: 500px;
     height: 600px;
     vertical-align: top;
-    padding-bottom: 20px;
+    padding-bottom: 60px;
 
 }
 
 .column1 {
+    width: 500px;
     float: left;
 }
 
 .column2 {
-    margin-left: 25px;
+    width: 500px;
+    padding-left: 95px;
 }
 
 main .content-grid {
     display: inline;
-    max-width: 300px;
+    max-width: 450px;
     margin: 0 auto;
 }
 

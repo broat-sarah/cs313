@@ -24,7 +24,7 @@
                 <div class="column1">
                     <form method="post" action="GetGeoCoding" class="searchform">
                         <label for="searchParam">Search: </label>
-                        <input type="text" id="searchParam" class="controls" name="searchParam" value="What's your location?"/>
+                        <input type="text" id="searchParam" class="controls" name="searchParam" value="What's your location?" size="75"/>
                         <input type="submit" value="Search"/>
                         <br/>
                         <br/>
