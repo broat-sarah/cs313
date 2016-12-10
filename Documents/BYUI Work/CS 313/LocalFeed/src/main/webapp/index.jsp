@@ -15,11 +15,11 @@
         <!-- Bootstrap core css-->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <!-- <link href="styles.css" type="text/css" rel="stylesheet" /> -->
+        <link href="styles.css" type="text/css" rel="stylesheet" /> -->
         <title>LocalFeed 1.0</title>
     </head>
     <body>
-        <div class="jumbotron">
+        <div class="jumbotron header">
             <div class="container">
                 <h1>LiveFeed 1.0</h1>
             </div>
