@@ -11,6 +11,12 @@
   height: 175px;
 }
 
+.app-store-header {
+  background-color: #1092a8;
+  height: 175px;
+  margin-top: -20px;
+}
+
 
 #logo {
     display: block;
@@ -47,8 +53,20 @@ h1, h2 {
 footer {
   font-family: "Arial Black", Gadget, sans serif;
   color: #ffffff;
-  position: absolute;
   width: 100%;
+  position: relative;
   height: 60px;
   bottom: 0;
+}
+
+/* ABOUT page */
+
+#myCarousel {
+    width: 600px;
+    height: 500px;
+}
+
+#links a{
+    color: #1092a8;
+    text-align: left;
 }
