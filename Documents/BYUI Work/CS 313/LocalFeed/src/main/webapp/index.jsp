@@ -15,7 +15,7 @@
         <!-- Bootstrap core css-->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <link href="styles.css" type="text/css" rel="stylesheet" /> -->
+        <link href="styles.css" type="text/css" rel="stylesheet" />
         <title>LocalFeed 1.0</title>
     </head>
     <body>
@@ -39,14 +39,17 @@
                 <div class="column2">
                     <h2>Webcams</h2>
                     <div class="content-grid">
-                        <c:set var="numCams" value="0" scope="page" />
+                        <c:set var="numCams" value="0"/>
                         <c:forEach var="webcam" items="${webcams}">
                             <c:if test="${numCams} % 3 == 0">
                                 <div class="row">
                             </c:if>
-                            <c:set var="numCams" value="${numCams + 1}" scope="page"/>
-                            <div class="col-sm-4">
-                                <a name="lkr-timelapse-player" data-id="${webcam.id}" data-play="day" href="//lookr.com/${webcam.id}" target="_blank">${webcam.title}</a><script async type="text/javascript" src="//api.lookr.com/embed/script/timelapse.js"></script>
+                            <c:set var="numCams" value="${numCams + 1}"/>
+                            <div class="col-sm-4 videobox">
+                                <figure class="figure">
+                                    <a name="lkr-timelapse-player" data-id="${webcam.id}" data-play="day" href="//lookr.com/${webcam.id}" target="_blank">${webcam.title}</a><script async type="text/javascript" src="//api.lookr.com/embed/script/timelapse.js"></script>
+                                    <figcaption class="figure-caption small">${webcam.title}</figcaption>
+                                </figure>
                             </div>
                             <c:if test="${numCams} % 4 == 0">
                                 </div>
@@ -62,8 +65,7 @@
             </div>
         </footer>
         
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
+        <!-- Bootstrap core JavaScript ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
