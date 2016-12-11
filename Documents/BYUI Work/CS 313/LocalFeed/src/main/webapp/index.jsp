@@ -19,24 +19,24 @@
         <title>LocalFeed 1.0</title>
     </head>
     <body>
-        <div class="jumbotron header">
-            <div class="container">
-                <h1>LiveFeed 1.0</h1>
+            <div class="header">
+                <div class="container">
+                    <img src="localfeedlogo.png" alt="LocalFeed logo" id="logo"/>
+                </div>
             </div>
-        </div>
         <main>
             <div class="container">
                 <form method="post" action="GetGeoCoding" class="form-inline">
                     <label for="searchParam">Search: </label>
                     <input type="text" id="searchParam" class="form-control" name="searchParam" placeholder="What is your location?" size="75"/>
-                    </br>
+                    </br><br />
                     <label for="radius">Radius (km): </label>
                     <input type="number" id="radius" class="form-control" name="radius" value="25"/>
-                    <input type="submit" value="Search"/>
+                    <input type="submit" value="Search" id="searchbutton"/>
                 </form>
             </div>
+      
             <div class="container">
-                <div class="column2">
                     <h2>Webcams</h2>
                     <div class="content-grid">
                         <c:set var="numCams" value="0"/>
